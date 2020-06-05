@@ -65,3 +65,12 @@ end
 end
 
 puts "9 portfolio items created"
+
+
+5.times do |technology|
+    Portfolio.last.technologies.create!(
+        name:"Rails"
+    )
+end
+
+puts "5 technologies created"
