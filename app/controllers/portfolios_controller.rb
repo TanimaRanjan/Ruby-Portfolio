@@ -3,12 +3,18 @@ class PortfoliosController < ApplicationController
         @portfolio_items = Portfolio.all
     end
 
+    def react
+        @react_portfolio_items = Portfolio.react
+    end
+
     def show
         @portfolio_item = Portfolio.find(params[:id])
     end
 
     def new 
         @portfolio_item = Portfolio.new
+        3.times { @portfolio_item.technologies.build }
+
     end
 
     def edit 
@@ -53,7 +59,7 @@ class PortfoliosController < ApplicationController
     end
 
     def portfolio_item_params
-        params.require(:portfolio).permit(:title, :subtitle, :body)
+        params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name])
     end 
 
 end

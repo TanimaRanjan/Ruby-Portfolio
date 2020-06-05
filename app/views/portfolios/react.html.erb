@@ -1,0 +1,15 @@
+<h1>React Portfolio</h1>
+
+<%= link_to "Create new portfolio item", new_portfolio_path %>
+<% @react_portfolio_items.each do |portfolio_item| %>
+    
+    <hr>
+    <%# <h2><%= link_to portfolio_item.title , portfolio_path(portfolio_item.id) </h2> %>
+    <h2><%= link_to portfolio_item.title , portfolio_show_path(portfolio_item) %></h2>
+    <%# <p><%= portfolio_item.title  %>
+    <%= image_tag portfolio_item.thumb_image if !portfolio_item.thumb_image.nil? %>
+    <p><%= portfolio_item.subtitle %></p>
+    <p><%= portfolio_item.body %></p>
+    <p><%= link_to 'Edit', edit_portfolio_path(portfolio_item) %></p>
+    <p><%= link_to 'Delete', portfolio_item, method: :delete, data: {confirm: 'Are you sure ? ' } %></p>
+<% end %>
