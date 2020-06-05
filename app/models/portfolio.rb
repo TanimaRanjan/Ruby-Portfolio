@@ -6,4 +6,13 @@ class Portfolio < ApplicationRecord
     end
 
     scope :ruby_on_rails_portfolio_item, -> { where(subtitle: 'Ruby on Rails')} 
+
+    after_initialize :set_defaults 
+
+    def set_defaults
+        self.main_image ||= "https://picsum.photos/600/600?random=100"
+        self.thumb_image ||="https://picsum.photos/200/200?random=200"
+    end
+
+
 end
