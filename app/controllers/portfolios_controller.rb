@@ -1,4 +1,6 @@
 class PortfoliosController < ApplicationController
+    before_action :set_portfolio_item, only: [:show, :edit, :update, :destroy]
+    
     def index 
         @portfolio_items = Portfolio.all
     end
@@ -7,8 +9,7 @@ class PortfoliosController < ApplicationController
         @react_portfolio_items = Portfolio.react
     end
 
-    def show
-        @portfolio_item = Portfolio.find(params[:id])
+    def show   
     end
 
     def new 
@@ -18,7 +19,6 @@ class PortfoliosController < ApplicationController
     end
 
     def edit 
-        @portfolio_item = Portfolio.find(params[:id])
     end 
 
     def create 
@@ -37,7 +37,6 @@ class PortfoliosController < ApplicationController
 
 
     def update
-        @portfolio_item = Portfolio.find(params[:id])
         respond_to do |format|
             if @portfolio_item.update(portfolio_item_params)
                 format.html {redirect_to portfolios_path, notice:'Portfolio was updated'}
@@ -49,17 +48,23 @@ class PortfoliosController < ApplicationController
 
 
     def destroy
-
-        @portfolio_item = Portfolio.find(params[:id])
-
+        @portfolio_item.technologies.delete_all
         @portfolio_item.destroy
         respond_to do |format|
             format.html { redirect_to portfolios_path, notice: 'Portfolio item was successfully deleted '}
         end
     end
 
+    def set_portfolio_item 
+        @portfolio_item = Portfolio.find(params[:id])
+    end
+
     def portfolio_item_params
-        params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name])
+        params.require(:portfolio)
+                        .permit(:title, 
+                                :subtitle, 
+                                :body, 
+                                technologies_attributes: [:name])
     end 
 
 end
