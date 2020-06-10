@@ -1,6 +1,11 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
+  # Layout created specific for blog - Similar ofr portfolio 
   layout "blog"
+  # All user will be able to access show and index blog. 
+  # User - will be able to comment - so everything except :destroy, :new, :create, :update, :edi
+  # site_admin can do all
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit, :toggle_status]}, site_admin: :all
   # GET /blogs
   # GET /blogs.json
   def index
