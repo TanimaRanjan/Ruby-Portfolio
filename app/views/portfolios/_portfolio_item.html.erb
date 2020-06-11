@@ -2,7 +2,7 @@
     <div class="card mb-4 box-shadow">
 
     <%# <h2><%= link_to portfolio_item.title , portfolio_path(portfolio_item.id) </h2> %>
-    <h2><%= link_to portfolio_item.title , portfolio_show_path(portfolio_item) %></h2>
+    <h4><%= link_to portfolio_item.title , portfolio_show_path(portfolio_item) %></h4>
     <%# <p><%= portfolio_item.title  %>
     <%= image_tag   portfolio_item.thumb_image if !portfolio_item.thumb_image.nil?  %>
     <div class="card-body">
