@@ -1,14 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-8 blog-main">
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
+<div class="blog-post">
+<h2><%= @blog.title %></h2>
   <%= @blog.body %>
-</p>
-
+</div>
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>
+</div>
