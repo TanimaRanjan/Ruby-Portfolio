@@ -1,6 +1,7 @@
 
 <%= form_for(@portfolio_item) do |form| %>
-
+  <div class="row padding-top">
+  <div class="col-md-5">
   <div class="form-group">
     <%= form.label :title %>
     <%= form.text_field :title, class:'form-control' %>
@@ -10,13 +11,16 @@
     <%= form.label :subtitle %>
     <%= form.text_field :subtitle, class:'form-control' %>
   </div>
-
+  </div>
+  <div class="col-md-7">
   <div class="form-group">
     <%= form.label :body %>
     <%= form.text_area :body , class:'form-control', rows:15%>
   </div>
-
+  </div>
+  </div>
   <ul>
+    <h4>Technologies used</h4>
     <%= form.fields_for :technologies do |technology_form| %>
     <li>
       <%= technology_form.label :name %>
@@ -26,7 +30,7 @@
   </ul>
 
   <div class="actions">
-    <%= form.submit "Save", class:'btn btn-primary'%>
+    <%= form.submit "Save", class:'btn btn-primary btn-block'%>
   </div>
  
 <% end %>
