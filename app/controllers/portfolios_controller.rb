@@ -2,7 +2,8 @@ class PortfoliosController < ApplicationController
     before_action :set_portfolio_item, only: [:show, :edit, :update, :destroy]
     access all: [:show, :index, :react], user: {except: [:destroy, :new, :create, :update, :edit, :toggle_status]}, site_admin: :all
     def index 
-        @portfolio_items = Portfolio.all
+        # @portfolio_items = Portfolio.order("position ASC")
+        @portfolio_items = Portfolio.by_position
     end
 
     def react
